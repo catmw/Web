@@ -65,6 +65,30 @@ app.get('/results/2024', (req, res) => {
     });
 });
 
+app.get('/evresults/2024', (req, res) => {
+    const query = `SELECT states.name AS state_name, states.ev AS ev, pres_votes.candidate_name AS candidate_name, pres_votes.votes AS votes
+FROM pres_votes
+JOIN states 
+ON pres_votes.state_name = states.name
+WHERE pres_votes.year = 2024
+    AND pres_votes.votes = (
+        SELECT MAX(pv.votes)
+        FROM pres_votes pv
+        WHERE pv.state_name = states.name AND pv.year = 2024
+    )
+ORDER BY 
+    states.name;`;
+    db.query(query, (err, results) => {
+        if (err) {
+            console.error(err);
+            res.status(500).json({ error: 'Database error' });
+        } else {
+            res.json(results);
+        }
+    });
+});
+
+
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
