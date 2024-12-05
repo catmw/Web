@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="new.js"></script>
+    <script src="routesJS.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <img src="./images/2024.png" alt="2024 Logo" style="width: 100px; height: auto;">
+            <a href="routes.html">Routes</a>
+            <a href="states.html">States</a>
+            <a href="candidates.html">Candidates</a>
+            <a href="results24.html">Results 2024</a>
+            <a href="evresults24.html">EV Results 2024</a>
+            <a href="resultsmap.html">Results Map</a>
+            <a href="login.html">Login</a>
+        </nav>
+    </header>
+
+    <h2>Routes</h2>
+
+    <table class="table" id="routeTable">
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Route</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>GET States</td>
+                <td><a href="http://localhost:3000/states" class="links" target="_blank">/states</a></td>
+                <td><button type="button" id="getStates" data-url="/states">GET</button></td>
+            </tr>
+            <tr>
+                <td>GET Candidates</td>
+                <td><a href="http://localhost:3000/candidates" class="links" target="_blank">/candidates</a></td>
+                <td><button type="button" id="getCandidates" data-url="/candidates">GET</button></td>
+            </tr>
+            <tr>
+                <td>GET Results by Year</td>
+                <td><a href="http://localhost:3000/results/2024" class="links" target="_blank">/results/2024</a></td>
+                <td><button type="button" id="getResults" data-url="/results/2024">GET</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <section>
+        <h2>JSON Response</h2>
+        <textarea id="TextArea" rows="12" readonly placeholder="JSON response will appear here..."></textarea>
+    </section>
+
+</body>
+</html>
