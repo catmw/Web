@@ -37,8 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </td>
                     <td>${winner.candidate_name}</td>
                     <td>${winner.votes.toLocaleString()}</td>
-                    <td>${((winner.votes / (winner.votes + runnerUp.votes)) * 100).toFixed(2)}%</td>
-                    <td>${((runnerUp.votes / (winner.votes + runnerUp.votes)) * 100).toFixed(2)}%</td>
+                    <td>${((winner.votes / (winner.votes + runnerUp.votes)) * 100).toFixed(0)}%</td>
+                    <td>${((runnerUp.votes / (winner.votes + runnerUp.votes)) * 100).toFixed(0)}%</td>
                     <td>${runnerUp.votes.toLocaleString()}</td>
                     <td>${runnerUp.candidate_name}</td>
                 `;
