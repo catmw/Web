@@ -1,10 +1,10 @@
-document.addEventListener('DOMContentLoaded', () => {
+$(document).ready(function () {
     async function loadElectionResults() {
         try {
             // Fetch data from the backend
             const response = await fetch('http://localhost:3000/results/2024');
             const results = await response.json();
-            const tbody = document.querySelector('.table tbody');
+            const $tbody = $('.table tbody');
 
             // Group results by state
             const stateResults = {};
@@ -30,8 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     winner.candidate_party === 'Republican' ? 'red' : 'blue';
 
                 // Create the table row
-                const row = document.createElement('tr');
-                row.innerHTML = `
+                const $row = $('<tr>');
+                $row.html(`
                     <td class="state-cell ${statePartyColor}">
                         (${winner.candidate_party.charAt(0)}) ${winner.state_name} (${winner.state_abbr})
                     </td>
@@ -41,14 +41,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     <td>${((runnerUp.votes / (winner.votes + runnerUp.votes)) * 100).toFixed(0)}%</td>
                     <td>${runnerUp.votes.toLocaleString()}</td>
                     <td>${runnerUp.candidate_name}</td>
-                `;
-                tbody.appendChild(row);
+                `);
+                $tbody.append($row);
             });
         } catch (error) {
             console.error('Error loading election results:', error);
         }
     }
 
-    // Call the function when the page loads
     loadElectionResults();
 });

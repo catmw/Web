@@ -1,5 +1,6 @@
 <html>
     <head>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     </head>
 
     <body>
@@ -20,10 +21,10 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Name</th>
+                    <th onclick="sortStates('name')">Name</th>
                     <th>Abbr</th>
                     <th>Capital</th>
-                    <th>EV</th>
+                    <th onclick="sortStates('ev')">EV</th>
                 </tr>
             </thead>
             <tbody></tbody>
