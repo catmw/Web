@@ -1,30 +1,29 @@
 $(document).ready(function () {
     async function loadElectionResults() {
         try {
-            // Fetch data from the backend
             const response = await fetch('http://localhost:3000/evresults/2024');
             const results = await response.json();
             const $tbody = $('#vote-details tbody');
 
-            // Clear the table body before appending rows
             $tbody.empty();
 
-            console.log('Backend Results:', results); // Debug: Inspect the response
+            console.log('check', results);
 
-            // Add each state's winner to the table
             results.forEach(winner => {
                 const $row = $('<tr>');
                 $row.html(`
-                    <td>${winner.state_name}</td>
+                    <td>${winner.state_name}(${winner.state_abbr})</td>
                     <td>${winner.ev}</td>
                     <td>${winner.candidate_name}</td>
                 `);
 
-                // Apply color-coding for the winning candidate
+
                 if (winner.candidate_name === 'Donald Trump') {
-                    $row.css('background-color', '#FF9999'); // Red shade for Republican
+                    //pretty red
+                    $row.css('background-color', '#FF9999'); 
                 } else if (winner.candidate_name === 'Kamala Harris') {
-                    $row.css('background-color', '#9999FF'); // Blue shade for Democrat
+                    //pretty blue
+                    $row.css('background-color', '#9999FF'); 
                 }
 
                 $tbody.append($row);

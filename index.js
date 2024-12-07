@@ -66,7 +66,7 @@ app.get('/results/2024', (req, res) => {
 });
 
 app.get('/evresults/2024', (req, res) => {
-    const query = `SELECT states.name AS state_name, states.ev AS ev, pres_votes.candidate_name AS candidate_name, pres_votes.votes AS votes
+    const query = `SELECT states.name AS state_name, states.abbr AS state_abbr, states.ev AS ev, pres_votes.candidate_name AS candidate_name, pres_votes.votes AS votes
 FROM pres_votes
 JOIN states 
 ON pres_votes.state_name = states.name

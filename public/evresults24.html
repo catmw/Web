@@ -6,7 +6,7 @@
     <body>
         <header>
             <nav>
-                <img src="./images/2024.png"alt="logo" style="width: 150px; height:auto;">
+            <img src="./images/2024.png"alt="logo" style="width: 150px; height:auto;">
             <a href="routes.html">Routes</a>
             <a href="states.html">States</a>
             <a href="candidates.html">Candidates</a>
@@ -14,28 +14,29 @@
             <a href="evresults24.html">EV Result 2024</a>
             <a href="resultsmap.html">Results Map</a>
             <a href="login.html">Login</a>
+        </nav>
+            <hr>
             <h2>EV Result 2024</h2>
+            <hr>
         </header>
 
         <main>
-            <!-- Candidate Summary Section -->
             <section id="summary">
                 <div class="candidate-summary" id="candidate1">
                     <h3>Candidate 1</h3>
                     <p id="candidate1-name"></p>
-                    <div class="progress-bar" id="candidate1-progress"></div>
+                    <div class="progress-bar" id="candidate1Votes"></div>
                     <p id="candidate1-votes"></p>
                 </div>
     
                 <div class="candidate-summary" id="candidate2">
                     <h3>Candidate 2</h3>
                     <p id="candidate2-name"></p>
-                    <div class="progress-bar" id="candidate2-progress"></div>
+                    <div class="progress-bar" id="candidate2Votes"></div>
                     <p id="candidate2-votes"></p>
                 </div>
             </section>
     
-            <!-- Vote Details Table -->
             <section id="vote-details-section">
                 <h2>Vote Details</h2>
                 <table id="vote-details">
@@ -47,11 +48,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Rows will be dynamically populated -->
                     </tbody>
                 </table>
             </section>
         </main>
         <script src="evresults24JS.js"></script>
+        <div id="footer"></div>
     </body>
 </html>
