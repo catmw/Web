@@ -1,7 +1,7 @@
 $(document).ready(function () {
     async function loadElectionResults() {
         try {
-            // Fetch data from the backend
+
             const response = await fetch('http://localhost:3000/results/2024');
             const results = await response.json();
             const $tbody = $('.table tbody');
@@ -15,21 +15,20 @@ $(document).ready(function () {
                 stateResults[result.state_name].push(result);
             });
 
-            // Process each state
             Object.keys(stateResults).forEach(state => {
                 const stateData = stateResults[state];
 
-                // Determine the winner by comparing votes
+                //compare votes
                 const winner = stateData.reduce((prev, curr) =>
                     prev.votes > curr.votes ? prev : curr
                 );
                 const runnerUp = stateData.find(candidate => candidate !== winner);
 
-                // Set the party color for the winner
+                //party colour
                 const statePartyColor =
                     winner.candidate_party === 'Republican' ? 'red' : 'blue';
 
-                // Create the table row
+                // table
                 const $row = $('<tr>');
                 $row.html(`
                     <td class="state-cell ${statePartyColor}">
@@ -44,6 +43,7 @@ $(document).ready(function () {
                 `);
                 $tbody.append($row);
             });
+            //error check
         } catch (error) {
             console.error('Error loading election results:', error);
         }

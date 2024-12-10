@@ -7,53 +7,55 @@ $(document).ready(function () {
 
     // Get States
     $getStatesButton.on('click', function () {
-        $.ajax({
-            url: 'http://localhost:3000/states',
-            method: 'GET',
-            dataType: 'json',
-            success: function (data) {
+        fetch('http://localhost:3000/states')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Error: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
                 $outputTextArea.text(JSON.stringify(data, null, 2));
-            },
-            error: function (xhr, status, error) {
-                console.error('Error fetching states:', error);
-                $outputTextArea.text('Failed to fetch data.');
-            }
-        });
+            })
     });
 
     // Get Candidates
     if ($getCandidatesButton.length) {
         $getCandidatesButton.on('click', function () {
-            $.ajax({
-                url: 'http://localhost:3000/candidates', // Adjust URL as needed
-                method: 'GET',
-                dataType: 'json',
-                success: function (data) {
+            fetch('http://localhost:3000/candidates')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Error: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
                     const formattedData = data.map(item => `${item.candidate_party}: ${item.candidate_name}`).join('\n');
                     $outputTextArea.text(formattedData);
-                },
-                error: function (xhr, status, error) {
-                    console.error('Error fetching parties and candidates:', error);
-                    $outputTextArea.text('Failed to fetch data.');
-                }
-            });
+                })
+                .catch(error => {
+                    console.error('Error getting candidates:', error);
+                    $outputTextArea.text('Failed to get data.');
+                });
         });
     }
 
     // Get Results 2024
     $getResults2024Button.on('click', function () {
-        $.ajax({
-            url: 'http://localhost:3000/results/2024',
-            method: 'GET',
-            dataType: 'json',
-            success: function (data) {
+        fetch('http://localhost:3000/results/2024')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Error: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
                 $outputTextArea.text(JSON.stringify(data, null, 2));
-            },
-            error: function (xhr, status, error) {
-                console.error('Error fetching results:', error);
-                $outputTextArea.text('Failed to fetch data.');
-            }
-        });
+            })
+            .catch(error => {
+                console.error('Error getting results:', error);
+                $outputTextArea.text('Failed to get data.');
+            });
     });
 
 });

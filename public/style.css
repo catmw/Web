@@ -18,3 +18,23 @@
 .blue {
     background-color: blue;
 }
+
+.progress-bar {
+    width: 100%;
+    height: 30px;
+    background-color: #ddd;
+    position: relative;
+    display: flex;
+}
+.candidate1 {
+    background-color: blue;
+    height: 100%;
+    text-align: center;
+    color: white;
+    overflow: hidden;}
+.candidate2 {
+    background-color: red;
+    height: 100%;
+    text-align: center;
+    color: white;
+    overflow: hidden;}

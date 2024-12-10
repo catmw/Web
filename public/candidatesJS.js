@@ -1,7 +1,6 @@
 $(document).ready(function () {
     async function loadCandidates() {
         try {
-            // Fetch data from the backend
             const response = await fetch('http://localhost:3000/candidates');
             const candidates = await response.json();
             const $tbody = $('.table tbody');

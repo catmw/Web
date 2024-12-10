@@ -33,5 +33,24 @@ $(document).ready(function () {
         }
     }
 
+        let votesCandidate1 = 50;
+        let votesCandidate2 = 50;
+
+        function updateProgressBar() {
+            const totalVotes = votesCandidate1 + votesCandidate2;
+
+            // Calculate the percentage for each candidate
+            const percentCandidate1 = (votesCandidate1 / totalVotes) * 100;
+            const percentCandidate2 = (votesCandidate2 / totalVotes) * 100;
+
+            // Update the width of the progress bar segments
+            $("#candidate1").css("width", percentCandidate1 + "%").text(Math.round(percentCandidate1) + "%");
+            $("#candidate2").css("width", percentCandidate2 + "%").text(Math.round(percentCandidate2) + "%");
+        }
+
+            // Initial render of the progress bar
+        updateProgressBar();
+    
+
     loadElectionResults();
 });
